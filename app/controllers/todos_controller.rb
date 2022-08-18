@@ -18,7 +18,7 @@ class TodosController < ApplicationController
     if @todo.save
       redirect_to todos_path, notice: "New todo added!"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -29,7 +29,7 @@ class TodosController < ApplicationController
     if @todo.update(todo_params)
       redirect_to todos_path, notice: "Todo successfully updated."
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
