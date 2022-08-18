@@ -22,6 +22,7 @@
 @import "config/reset";
 
 // Components
+@import "components/turbo_progress_bar";
 @import "components/btn";
 @import "components/error_message";
 @import "components/form";
