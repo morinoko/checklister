@@ -35,7 +35,11 @@ class TodosController < ApplicationController
 
   def destroy
     @todo.destroy
-    redirect_to todos_path, notice: "Todo successfully deleted."
+
+    respond_to do |format|
+      format.html { redirect_to todos_path, notice: "Todo successfully deleted." }
+      format.turbo_stream
+    end
   end
 
   private
