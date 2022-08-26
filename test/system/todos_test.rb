@@ -10,7 +10,7 @@ class TodosTest < ApplicationSystemTestCase
     assert_selector 'h1', text: "Checklist"
 
     click_on "New Todo"
-    assert_selector 'h1', text: "New Todo"
+    assert_selector 'a', text: "New Todo"
 
     fill_in "Summary", with: "Go shopping"
     click_on "Create Todo"
@@ -31,7 +31,7 @@ class TodosTest < ApplicationSystemTestCase
     assert_selector 'h1', text: "Checklist"
 
     click_on "Edit", match: :first
-    assert_selector "h1", text: "Edit Todo"
+    assert_selector "a", text: "Edit"
 
     fill_in "Summary", with: "Updated todo"
     click_on "Update Todo"
@@ -44,7 +44,7 @@ class TodosTest < ApplicationSystemTestCase
     visit todos_path
     assert_text @todo.summary
 
-    click_on "Delete", match: :first
+    click_on "Done", match: :first
     assert_no_text @todo.summary
   end
 end
