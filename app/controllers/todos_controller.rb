@@ -16,7 +16,10 @@ class TodosController < ApplicationController
     @todo = Todo.new(todo_params)
 
     if @todo.save
-      redirect_to todos_path, notice: "New todo added!"
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to todos_path, notice: "New todo added!" }
+      end
     else
       render :new, status: :unprocessable_entity
     end
