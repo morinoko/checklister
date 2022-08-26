@@ -1,6 +1,6 @@
 <%= turbo_frame_tag todo do %>
   <div class="todo">
-    <%= link_to todo.summary, todo_path(todo) %>
+    <%= link_to todo.summary, todo_path(todo), data: { turbo_frame: "_top" } %>
     <div class="todo__actions">
       <%= button_to "Done",
                     todo_path(todo),
