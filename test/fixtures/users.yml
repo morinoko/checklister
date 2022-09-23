@@ -1,0 +1,16 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+john:
+  share_group: family
+  email: john@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+jane:
+  share_group: family
+  email: jane@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+outsider:
+  share_group: outside_group
+  email: outsider@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>

@@ -1,8 +1,11 @@
 first:
+  share_group: family
   summary: Go shopping
 
 second:
+  share_group: family
   summary: Cook dinner
 
 third:
-  summary: Take dog for walk
+  share_group: outside_group
+  summary: Outsider todo
