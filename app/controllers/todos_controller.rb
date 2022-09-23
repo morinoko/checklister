@@ -2,7 +2,7 @@ class TodosController < ApplicationController
   before_action :set_todo, only: %w[show edit update destroy]
 
   def index
-    @todos = Todo.ordered
+    @todos = current_share_group.todos.ordered
   end
 
   def show
@@ -13,7 +13,7 @@ class TodosController < ApplicationController
   end
 
   def create
-    @todo = Todo.new(todo_params)
+    @todo = current_share_group.todos.build(todo_params)
 
     if @todo.save
       respond_to do |format|
@@ -52,6 +52,6 @@ class TodosController < ApplicationController
   end
 
   def set_todo
-    @todo = Todo.find(params[:id])
+    @todo = current_share_group.todos.find(params[:id])
   end
 end
