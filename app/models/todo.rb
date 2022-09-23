@@ -1,6 +1,8 @@
 class Todo < ApplicationRecord
   validates :summary, presence: true
 
+  belongs_to :share_group
+
   scope :ordered, -> { order(created_at: :desc) }
 
   # after_create_commit -> { broadcast_prepend_later_to "todos" }
