@@ -2,6 +2,7 @@ require "application_system_test_case"
 
 class TodosTest < ApplicationSystemTestCase
   setup do
+    login_as users(:john)
     @todo = todos(:first)
   end
 
