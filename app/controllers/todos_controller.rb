@@ -16,9 +16,11 @@ class TodosController < ApplicationController
     @todo = current_share_group.todos.build(todo_params)
 
     if @todo.save
+      message = "New todo added!"
+
       respond_to do |format|
-        format.turbo_stream
-        format.html { redirect_to todos_path, notice: "New todo added!" }
+        format.turbo_stream { flash.now[:notice] = message }
+        format.html { redirect_to todos_path, notice: message }
       end
     else
       render :new, status: :unprocessable_entity
@@ -30,7 +32,12 @@ class TodosController < ApplicationController
 
   def update
     if @todo.update(todo_params)
-      redirect_to todos_path, notice: "Todo successfully updated."
+      message = "Todo successfully updated."
+
+      respond_to do |format|
+        format.html { redirect_to todos_path, notice: message }
+        format.turbo_stream { flash.now[:notice] = message }
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -39,9 +46,10 @@ class TodosController < ApplicationController
   def destroy
     @todo.destroy
 
+    message = "Todo successfully deleted."
     respond_to do |format|
-      format.html { redirect_to todos_path, notice: "Todo successfully deleted." }
-      format.turbo_stream
+      format.html { redirect_to todos_path, notice: message }
+      format.turbo_stream { flash.now[:notice] = message }
     end
   end
 
